@@ -1,0 +1,60 @@
+﻿@model Actividad_Autonoma.Models.PokemonDetail
+
+@{
+    ViewData["Title"] = "Detalles del Producto";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg">
+                <div class="card-header bg-primary text-white text-center">
+                    <h3 class="mb-0 text-capitalize">@Model.Name</h3>
+                </div>
+                <div class="card-body text-center">
+                    <img src="@Model.ImageUrl" class="img-fluid mb-3" style="width: 180px; height: 180px;" alt="@Model.Name" />
+
+                    <ul class="list-group list-group-flush text-start mb-3">
+                        <li class="list-group-item"><strong>Código / ID:</strong> #@Model.Id</li>
+                        <li class="list-group-item"><strong>Altura:</strong> @(Model.Height / 10.0) m</li>
+                        <li class="list-group-item"><strong>Peso:</strong> @(Model.Weight / 10.0) kg</li>
+                        <li class="list-group-item"><strong>Experiencia Base:</strong> @Model.BaseExperience XP</li>
+
+                        @if (Model.Abilities != null && Model.Abilities.Any())
+                        {
+                            <li class="list-group-item">
+                                <strong>Habilidades:</strong>
+                                <div>
+                                    @foreach (var ab in Model.Abilities)
+                                    {
+                                        <span class="badge bg-info text-dark text-capitalize me-1">
+                                            @ab.Ability.Name @(ab.IsHidden ? "(Oculta)" : "")
+                                        </span>
+                                    }
+                                </div>
+                            </li>
+                        }
+
+                        @if (Model.Types != null && Model.Types.Any())
+                        {
+                            <li class="list-group-item">
+                                <strong>Tipos:</strong>
+                                <div>
+                                    @foreach (var t in Model.Types)
+                                    {
+                                        <span class="badge bg-secondary text-capitalize me-1">@t.Type.Name</span>
+                                    }
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+                <div class="card-footer text-center">
+                    <a asp-controller="Pokemon" asp-action="Index" class="btn btn-secondary">
+                        Volver al Catálogo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

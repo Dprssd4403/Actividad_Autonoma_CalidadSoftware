@@ -17,5 +17,22 @@ namespace Actividad_Autonoma.Controllers
             var pokemonList = await _pokemonService.GetPokemonsAsync();
             return View(pokemonList.Results);
         }
+
+        public async Task<IActionResult> Details(int id)
+        {
+            if (id <= 0)
+            {
+                return NotFound();
+            }
+
+            var pokemon = await _pokemonService.GetPokemonByIdAsync(id);
+
+            if (pokemon == null)
+            {
+                return NotFound();
+            }
+
+            return View(pokemon);
+        }
     }
 }

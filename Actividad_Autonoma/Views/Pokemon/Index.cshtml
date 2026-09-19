@@ -12,9 +12,14 @@
             <div class="col-md-3 mb-4">
                 <div class="card h-100 text-center shadow-sm">
                     <img src="@pokemon.ImageUrl" class="card-img-top mx-auto mt-3" style="width: 100px; height: 100px;" alt="@pokemon.Name" />
-                    <div class="card-body">
-                        <h5 class="card-title text-capitalize">@pokemon.Name</h5>
-                        <p class="card-text text-muted">Código: #@pokemon.Id</p>
+                    <div class="card-body d-flex flex-column justify-content-between">
+                        <div>
+                            <h5 class="card-title text-capitalize">@pokemon.Name</h5>
+                            <p class="card-text text-muted">Código: #@pokemon.Id</p>
+                        </div>
+                        <a asp-controller="Pokemon" asp-action="Details" asp-route-id="@pokemon.Id" class="btn btn-primary mt-2">
+                            Ver Detalles
+                        </a>
                     </div>
                 </div>
             </div>
