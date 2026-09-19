@@ -1,0 +1,23 @@
+﻿@model IEnumerable<Actividad_Autonoma.Models.PokemonItem>
+
+@{
+    ViewData["Title"] = "Gestión de Productos - Pokémon";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Catálogo de Productos (Pokémon)</h2>
+    <div class="row">
+        @foreach (var pokemon in Model)
+        {
+            <div class="col-md-3 mb-4">
+                <div class="card h-100 text-center shadow-sm">
+                    <img src="@pokemon.ImageUrl" class="card-img-top mx-auto mt-3" style="width: 100px; height: 100px;" alt="@pokemon.Name" />
+                    <div class="card-body">
+                        <h5 class="card-title text-capitalize">@pokemon.Name</h5>
+                        <p class="card-text text-muted">Código: #@pokemon.Id</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
